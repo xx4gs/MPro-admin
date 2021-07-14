@@ -12,3 +12,5 @@ git clone https://github.com/xx4gs/MPro-admin.git
 
 """""""""""""""""""
 
+رابط التلقرام
+https://t.me/xx4gs
