@@ -1,51 +1,47 @@
-import requests
-import threading
-import sys as p
-import time as mp
-def slow(m2):
-	for m1 in m2 + '\n':
-		p.stdout.write(m1)
-		p.stdout.flush()
-		mp.sleep(1. / 120)
-slow("""
-__________________________________
-|                                |
-|    __________________          |
-|   |  Telegram:xx4gs  |         |
-|   |  Instagram:xx4gs |         |
-|   |__________________|         |
-|     ______________________     |
-|    |  MohammedPro💉      |     |
-|    |  MPro_admin.py💉    |     |
-|    |_____________________|     |
-|________________________________|
-""")
-slow("حط اخر الموقع ذي /")
-print("  ")
-urlmpro=input("[MPro url] >> ")
-mprofile='mpro-list.txt'
-mprofile1=open(mprofile,'r')
-def mpro_admin():
+import requests,sys,random,threading
+from colorama import Fore
+import sys as mp
+import time as mpp
+def slow(mpr):
+	for mppp in mpr + "\n":
+		mp.stdout.write(mppp)
+		mp.stdout.flush()
+		mpp.sleep(0.5 / 120)
+slow(f"""{Fore.BLUE}
+                                        _           _       
+                                       | |         (_)      
+  _ __ ___  _ __  _ __ ___     __ _  __| |_ __ ___  _ _ __  
+ | '_ ` _ \| '_ \| '__/ _ \   / _` |/ _` | '_ ` _ \| | '_ \ 
+ | | | | | | |_) | | | (_) | | (_| | (_| | | | | | | | | | |
+ |_| |_| |_| .__/|_|  \___/   \__,_|\__,_|_| |_| |_|_|_| |_|
+           | |                                              
+           |_|                                              
+  My Channel: @xx4gs----------------insta: @xx4gs
+{Fore.WHITE}""")
+slow(f"""{Fore.RED}
+url >> http://test.com		or	https://test.com {Fore.WHITE}""")
+url1= input(f"{Fore.RED} Enter Url:   {Fore.WHITE}")
+wordlist1=open("word.txt","r")
+def url_mpro():
 	while True:
-		mprofile2 = mprofile1.readline().split('\n')[0]
-		if "MohammedPro" in mprofile2:
-			mmppp=input("Examination is over Exit Enter : ")
-			print(mmppp)
+		mprro1=wordlist1.readline().split('\n')[0]
+		if "mpro" in mprro1:
+			slow("\n=====================================")
+			mmppp=input("Links Expired Exit Enter : ")
+			slow("\n=====================================")
 			exit()
 		else:
-			mprourl= urlmpro+mprofile2
-			reqmpro=requests.get(url=mprourl).status_code 
-			if reqmpro == 200:
-				print('[MPro Found] >> ', mprourl, '\n')
-				print("____")
-				with open("Found_MPro.txt", "a") as mppr:
-					mppr.write(f"[MPro Found] >> {mprourl}\n")
+			url = f"{url1}/{mprro1}"
+			rq=requests.get(url=url, timeout=4).status_code
+			if rq =='200':
+				print(f"{Fore.GREEN} [MPro>>] Found >> {url} {Fore.WHITE}")
+				with open('MPro-Url-Found.txt', 'a') as mp:
+					mp.write(url+'\n')
 			else:
-				print('[MPro Not Found] >> ', mprourl, '\n')
-				print("____")
+				print(f"{Fore.RED} [MPro>>] Not Found >> {url} {Fore.WHITE}")
 threads=[]
-for i in range(1):
-	thread1= threading.Thread(target=mpro_admin)
+for i in range(10):
+	thread1= threading.Thread(target=url_mpro)
 	thread1.start()
 	threads.append(thread1)
 for thread2 in threads:
